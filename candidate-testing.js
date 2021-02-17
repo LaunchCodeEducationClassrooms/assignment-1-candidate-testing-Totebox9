@@ -44,8 +44,9 @@ function askQuestion() {
 
 
   for (let i = 0; i < questions.length; i++) {
-    candidateAnswer = input.question(questions[i]);
+    candidateAnswer = input.question((i+1) + ") " + questions[i]);
     candidateAnswers.push(candidateAnswer);
+    console.log(`Your Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
   }
 }
 
@@ -58,11 +59,8 @@ function gradeQuiz(candidateAnswers) {
 
 
   grade = 0;
-  for (let i = 0; i < questions.length; i++) 
-  {
-    console.log(`\n${i + 1}) ${questions[i]}\nYou entered: ${candidateAnswers[i]}.\nThe correct answer is: ${correctAnswers[i]}.`);
-    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase())
-    {
+  for (let i = 0; i < questions.length; i++) {
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
      grade += 1;
     }
   }
@@ -79,8 +77,8 @@ function gradeQuiz(candidateAnswers) {
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-  
-  console.log(`Nice to meet you ${candidateName}!`);
+
+  console.log(`Nice to meet you ${candidateName}!\n`);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
