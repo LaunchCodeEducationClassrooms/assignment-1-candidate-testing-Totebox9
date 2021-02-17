@@ -53,23 +53,20 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
-
   let grade;
-
-
-  grade = 0;
+  let score = 0;
+  
   for (let i = 0; i < questions.length; i++) {
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
-     grade += 1;
+     score += 1;
     }
   }
-  console.log(`\nYou answered ${grade} questions correctly.`);
-  let percentage = (grade / questions.length) * 100;
-  if (percentage >= 80) {
-    console.log(`You PASSED with a score of ${percentage}%.`);
+  console.log(`\nYou answered ${score} questions correctly.`);
+  grade = (score / questions.length) * 100;
+  if (grade >= 80) {
+    console.log(`You PASSED with a score of ${grade}%.`);
   } else {
-    console.log(`You FAILED with a score of ${percentage}%.`);
+    console.log(`You FAILED with a score of ${grade}%.`);
   }
   return grade;
 }
